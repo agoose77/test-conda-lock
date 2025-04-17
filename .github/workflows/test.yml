@@ -1,0 +1,12 @@
+name: Test
+on: [push]
+jobs:
+  test-build-env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - uses: ./.github/actions/setup-environment
+      - run: which python
+      - run: python -c "import numpy; print(numpy.__version__)"
